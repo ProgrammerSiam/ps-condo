@@ -133,13 +133,118 @@ src/
 6. **Summary & Review**: Review all information before final submission
 7. **Completion**: Receive confirmation and next steps
 
-## 🤝 Contributing
+## 🛣️ Routes & Features
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+The application consists of **8 main routes**, each serving a specific purpose in the property management workflow:
+
+### 1. **Home Page** (`/`)
+
+- **Purpose**: Landing page with property type selection
+- **Features**:
+  - Property type cards (Single House, Apartment Complex, Condominiums)
+  - Role selection (Landlord/Realtor)
+  - Interactive card selection with hover effects
+  - Navigation to next step based on selection
+
+### 2. **Property Type** (`/property-type`)
+
+- **Purpose**: Detailed property type configuration
+- **Features**:
+  - Property type selection with descriptions
+  - Role-based access control
+  - Visual icons for each property type
+  - Form validation and progression
+
+### 3. **Property Information** (`/property-info`)
+
+- **Purpose**: Comprehensive property details management
+- **Features**:
+  - **Required Fields**:
+    - Property address with full location details
+    - Leasing information (manager contact, address)
+    - Charges and fees configuration
+    - Rent frequency and payment reminders
+  - **Optional Fields**:
+    - Application agreement settings
+    - About the property descriptions
+    - Pet fees and parking information
+  - **Recommended Fields**:
+    - Community amenities and features
+    - Nearest educational institutions
+    - Nearest stations and landmarks
+    - Utilities provider information
+  - **Media Management**:
+    - Photo gallery upload (9 photos total)
+    - Video upload options (property video, virtual tour, self video)
+  - **Form Features**:
+    - Modal-based form interactions
+    - Real-time validation
+    - Country/state selection dropdowns
+
+### 4. **Realtor Verification** (`/realtor-verification`)
+
+- **Purpose**: Document verification for realtor accounts
+- **Features**:
+  - File upload functionality for verification documents
+  - Document type categorization
+  - Upload progress tracking
+  - File validation and size limits
+  - Checkbox agreements for terms
+
+### 5. **Condominiums Information** (`/condominiums-info`)
+
+- **Purpose**: Condominium-specific information management
+- **Features**:
+  - Condominium-specific form fields
+  - Association information
+  - Special amenities for condo units
+  - Condo-specific rules and regulations
+
+### 6. **Subscription Plans** (`/subscription`)
+
+- **Purpose**: Subscription and payment management
+- **Features**:
+  - **Three Pricing Tiers**:
+    - Regular Plan: $99.99/month
+    - Platinum Plan: $129.99/month
+    - Enterprise Plan: $199.99/month
+  - **Payment Features**:
+    - Credit card form integration
+    - Saved card management
+    - Auto-renewal options
+    - 30-day free trial
+  - **UI Features**:
+    - Plan comparison
+    - Interactive plan selection
+    - Payment method selection
+    - Confirmation modals
+
+### 7. **Summary & Review** (`/summary`)
+
+- **Purpose**: Complete overview before final submission
+- **Features**:
+  - **Information Display**:
+    - All property details in organized sections
+    - Required vs optional field indicators
+    - Tag-based amenities display
+    - Media gallery preview
+  - **Edit Functionality**:
+    - Inline editing capabilities
+    - Delete options for entries
+    - Add new items functionality
+  - **Review Features**:
+    - Complete information validation
+    - Final confirmation before submission
+    - Navigation back to edit sections
+
+### 8. **Next Steps** (`/next-step`)
+
+- **Purpose**: Post-submission guidance and next actions
+- **Features**:
+  - Completion confirmation
+  - Next steps instructions
+  - Account setup guidance
+  - Support contact information
 
 ## 📄 License
 
