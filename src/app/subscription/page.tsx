@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
+import Header from "@/components/Header";
 
 const PLANS = [
   {
@@ -41,23 +42,13 @@ export default function SubscriptionPage() {
 
   return (
     <div className="min-h-screen bg-[#fafbfc] flex flex-col">
-      <div className="border-b border-gray-100 bg-white">
-        <div className="max-w-5xl mx-auto flex items-center justify-between py-4 px-8">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-xl text-[#2563eb]">Rent</span>
-            <span className="font-bold text-xl text-gray-900">Yard</span>
-          </div>
-          <Button className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-1.5 text-sm font-medium">
-            Save & Exit
-          </Button>
-        </div>
-      </div>
+      <Header />
       <main className="flex-1 flex flex-col items-center px-4 py-8">
-        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm p-10">
+        <div className="w-full max-w-6xl bg-white rounded-2xl shadow-sm p-10">
           <h2 className="text-xl font-semibold text-gray-900 mb-8">
             Choose a plan after 30-day free trial
           </h2>
-          <div className="flex gap-4 mb-8">
+          <div className="flex flex-col md:flex-row gap-4 mb-8">
             {PLANS.map((plan) => (
               <div
                 key={plan.key}
@@ -130,12 +121,12 @@ export default function SubscriptionPage() {
             </span>
           </div>
           <div className="flex justify-between items-center border-t pt-6 mt-6">
-            <Button
-              className="bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+            <button
+              className="text-[#272B35] hidden md:block bg-transparent underline text-[16px] font-medium leading-normal"
               type="button"
             >
               Back
-            </Button>
+            </button>
             <div className="flex items-center gap-4">
               <span className="text-base text-gray-700">
                 Total with card charges:

@@ -384,7 +384,7 @@ export default function Home() {
 
           <div className="flex justify-between items-center">
             <button
-              className="text-[#272B35] bg-transparent underline text-[14px] font-medium leading-normal"
+              className="text-[#272B35] bg-transparent underline text-[16px] font-medium leading-normal"
               type="button"
             >
               Back

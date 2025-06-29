@@ -144,9 +144,190 @@ export default function CondominiumsInfoPage() {
   const [utilityCompany, setUtilityCompany] = React.useState("");
   const UTILITY_TYPES = ["Electric", "Water", "Gas", "Internet"];
 
+  // Property address form state
+  const [propertyAddressForm, setPropertyAddressForm] = React.useState({
+    propertyName: "",
+    totalUnits: "",
+    website: "",
+    country: "Choose country",
+    street: "",
+    apt: "",
+    city: "",
+    state: "Choose state",
+    zip: "",
+  });
+  const handlePropertyAddressChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setPropertyAddressForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Charges form state
+  const [chargesForm, setChargesForm] = React.useState({
+    applicationFee: "",
+    applicationFeeType: "All 18+ applicant",
+    adminFee: "",
+    type01NotApplicable: false,
+  });
+  const handleChargesChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    if (e.target instanceof HTMLInputElement && e.target.type === "checkbox") {
+      const { name, checked } = e.target;
+      setChargesForm((prev) => ({
+        ...prev,
+        [name]: checked,
+      }));
+    } else {
+      const { name, value } = e.target;
+      setChargesForm((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+  const APPLICATION_FEE_TYPES = [
+    "All 18+ applicant",
+    "Per application",
+    "Other",
+  ];
+
   // Render modal content
   const renderModalContent = () => {
     switch (activeModal) {
+      case "Property address":
+        return (
+          <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="flex flex-col gap-1 md:col-span-2">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Property name as identifier*
+              </label>
+              <input
+                name="propertyName"
+                value={propertyAddressForm.propertyName}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="Dallas apartments complex"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Total apartment unit*
+              </label>
+              <input
+                name="totalUnits"
+                value={propertyAddressForm.totalUnits}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="50"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-3">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Property website (optional)
+              </label>
+              <input
+                name="website"
+                value={propertyAddressForm.website}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="https://"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Country/Region*
+              </label>
+              <select
+                name="country"
+                value={propertyAddressForm.country}
+                onChange={handlePropertyAddressChange}
+                className="input"
+              >
+                {COUNTRIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Street address*
+              </label>
+              <input
+                name="street"
+                value={propertyAddressForm.street}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="111 Austin Ave"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Apt, suite, unit (if applicable)
+              </label>
+              <input
+                name="apt"
+                value={propertyAddressForm.apt}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="123"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                City/Town*
+              </label>
+              <input
+                name="city"
+                value={propertyAddressForm.city}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="Dallas"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                State/Territory*
+              </label>
+              <select
+                name="state"
+                value={propertyAddressForm.state}
+                onChange={handlePropertyAddressChange}
+                className="input"
+              >
+                {STATES.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Zip code*
+              </label>
+              <input
+                name="zip"
+                value={propertyAddressForm.zip}
+                onChange={handlePropertyAddressChange}
+                className="input"
+                placeholder="75061"
+              />
+            </div>
+            <div className="flex items-end justify-end md:col-span-3 mt-2">
+              <Button
+                type="button"
+                className="px-8"
+                onClick={() => setActiveModal(null)}
+              >
+                Done
+              </Button>
+            </div>
+          </form>
+        );
       case "About the property":
         return (
           <form className="space-y-4">
@@ -162,7 +343,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -194,7 +375,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -244,7 +425,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -285,7 +466,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -356,7 +537,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -400,7 +581,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -458,7 +639,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -521,7 +702,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -585,7 +766,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -627,7 +808,7 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
               </Button>
             </div>
           </form>
@@ -769,7 +950,78 @@ export default function CondominiumsInfoPage() {
                 className="px-8"
                 onClick={() => setActiveModal(null)}
               >
-                Add
+                Done
+              </Button>
+            </div>
+          </form>
+        );
+      case "Charges":
+        return (
+          <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Application fee(one-time)*
+              </label>
+              <input
+                name="applicationFee"
+                value={chargesForm.applicationFee}
+                onChange={handleChargesChange}
+                className="input"
+                placeholder="100"
+                type="number"
+                min="0"
+              />
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1 invisible">
+                Application fee type
+              </label>
+              <select
+                name="applicationFeeType"
+                value={chargesForm.applicationFeeType}
+                onChange={handleChargesChange}
+                className="input"
+              >
+                {APPLICATION_FEE_TYPES.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex flex-col gap-1 md:col-span-1">
+              <label className="text-xs font-medium text-gray-700 mb-1">
+                Admin fee(one-time)*
+              </label>
+              <input
+                name="adminFee"
+                value={chargesForm.adminFee}
+                onChange={handleChargesChange}
+                className="input"
+                placeholder="15"
+                type="number"
+                min="0"
+              />
+            </div>
+            <div className="flex items-center gap-2 md:col-span-3 mt-2">
+              <input
+                type="checkbox"
+                name="type01NotApplicable"
+                checked={chargesForm.type01NotApplicable}
+                onChange={handleChargesChange}
+                className="w-4 h-4 accent-[#2563eb] rounded"
+              />
+              <span className="text-xs text-gray-700">
+                Type 01 charges not applicable
+              </span>
+            </div>
+            <div className="flex items-end justify-end md:col-span-3 mt-2">
+              <Button
+                type="button"
+                className="px-8"
+                onClick={() => setActiveModal(null)}
+              >
+                Done
               </Button>
             </div>
           </form>
@@ -783,7 +1035,7 @@ export default function CondominiumsInfoPage() {
     <div className="min-h-screen bg-[#fafbfc] flex flex-col">
       <Header />
       <main className="flex-1 flex flex-col items-center px-4 py-8">
-        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm p-10">
+        <div className="w-full max-w-7xl  p-10">
           <h2 className="text-2xl font-bold text-gray-900 mb-10 text-left">
             Condominiums information
           </h2>
@@ -811,7 +1063,7 @@ export default function CondominiumsInfoPage() {
                   )}
                 </span>
                 <Button
-                  className="bg-white text-[#2563eb] border border-[#2563eb] hover:bg-[#f5f8ff] px-3 py-1 text-sm font-medium"
+                  className="bg-blue-500 text-blue-50    border border-blue-500 hover:bg-blue-600 px-3 py-1 text-sm font-medium"
                   onClick={() => setActiveModal(item.label)}
                 >
                   + Add
@@ -841,7 +1093,7 @@ export default function CondominiumsInfoPage() {
                   )}
                 </span>
                 <Button
-                  className="bg-white text-[#2563eb] border border-[#2563eb] hover:bg-[#f5f8ff] px-3 py-1 text-sm font-medium"
+                  className="bg-blue-500 text-blue-50 border border-blue-500 hover:bg-blue-600 px-3 py-1 text-sm font-medium"
                   onClick={() => setActiveModal(item.label)}
                 >
                   + Add
@@ -871,11 +1123,10 @@ export default function CondominiumsInfoPage() {
                           fill="none"
                           viewBox="0 0 32 32"
                         >
-                          <rect width="32" height="32" rx="8" fill="#f5f8ff" />
                           <path
                             d="M16 10v12M10 16h12"
                             stroke="#2563eb"
-                            strokeWidth="2"
+                            strokeWidth="3"
                             strokeLinecap="round"
                           />
                         </svg>
@@ -904,16 +1155,10 @@ export default function CondominiumsInfoPage() {
                             fill="none"
                             viewBox="0 0 32 32"
                           >
-                            <rect
-                              width="32"
-                              height="32"
-                              rx="8"
-                              fill="#f5f8ff"
-                            />
                             <path
                               d="M16 10v12M10 16h12"
-                              stroke="#2563eb]"
-                              strokeWidth="2"
+                              stroke="#2563eb"
+                              strokeWidth="3"
                               strokeLinecap="round"
                             />
                           </svg>
@@ -946,12 +1191,12 @@ export default function CondominiumsInfoPage() {
             </div>
           </div>
           <div className="flex justify-between items-center border-t pt-6 mt-6">
-            <Button
-              className="bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+            <button
+              className="text-[#272B35] bg-transparent underline text-[16px] font-medium leading-normal"
               type="button"
             >
               Back
-            </Button>
+            </button>
             <Button
               type="button"
               className="px-8"

@@ -274,17 +274,17 @@ export default function NextStepPage() {
   const [agreementFile, setAgreementFile] = useState<File | null>(null);
   const [accepted, setAccepted] = useState(false);
   const [form, setForm] = useState({
-    companyName: "Runyan trade center",
+    companyName: "",
     companyId: "",
-    jobTitle: "Manager",
-    country: "Choose country",
-    street: "111 Austin Ave",
-    apt: "3050",
-    phone: "+880",
-    email: "majarul2025@gmail.com",
-    city: "Dallas",
-    state: "Choose state",
-    zip: "75061",
+    jobTitle: "",
+    country: "",
+    street: "",
+    apt: "",
+    phone: "",
+    email: "",
+    city: "",
+    state: "",
+    zip: "",
   });
 
   const handleFormChange = (
@@ -368,6 +368,7 @@ export default function NextStepPage() {
                     name="companyName"
                     value={form.companyName}
                     onChange={handleFormChange}
+                    placeholder="Runyan trade center"
                     className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
@@ -379,7 +380,8 @@ export default function NextStepPage() {
                     name="companyId"
                     value={form.companyId}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="1234567890"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -390,7 +392,8 @@ export default function NextStepPage() {
                     name="jobTitle"
                     value={form.jobTitle}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="Manager"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
                 <div className="flex flex-col gap-1 md:col-span-1">
@@ -410,13 +413,18 @@ export default function NextStepPage() {
                     name="country"
                     value={form.country}
                     onChange={handleFormChange}
-                    className="input"
+                    className="input h-full"
                   >
-                    {COUNTRIES.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
+                    <option value="" disabled selected={form.country === ""}>
+                      Choose country
+                    </option>
+                    {COUNTRIES.filter((c) => c !== "Choose country").map(
+                      (c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      )
+                    )}
                   </select>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -427,7 +435,8 @@ export default function NextStepPage() {
                     name="street"
                     value={form.street}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="111 Austin Ave"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -438,7 +447,8 @@ export default function NextStepPage() {
                     name="apt"
                     value={form.apt}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="3050"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -453,7 +463,8 @@ export default function NextStepPage() {
                       name="phone"
                       value={form.phone}
                       onChange={handleFormChange}
-                      className="input"
+                      placeholder="+880"
+                      className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                     />
                   </div>
                 </div>
@@ -465,7 +476,8 @@ export default function NextStepPage() {
                     name="email"
                     value={form.email}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="majarul2025@gmail.com"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -476,7 +488,8 @@ export default function NextStepPage() {
                     name="city"
                     value={form.city}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="Dallas"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal"
                   />
                 </div>
                 <div className="flex flex-col gap-1">
@@ -487,9 +500,12 @@ export default function NextStepPage() {
                     name="state"
                     value={form.state}
                     onChange={handleFormChange}
-                    className="input"
+                    className="input h-full"
                   >
-                    {STATES.map((s) => (
+                    <option value="" disabled selected={form.state === ""}>
+                      Choose state
+                    </option>
+                    {STATES.filter((s) => s !== "Choose state").map((s) => (
                       <option key={s} value={s}>
                         {s}
                       </option>
@@ -504,7 +520,8 @@ export default function NextStepPage() {
                     name="zip"
                     value={form.zip}
                     onChange={handleFormChange}
-                    className="input"
+                    placeholder="75061"
+                    className="input h-full placeholder:text-[#6F6C6A] placeholder:text-[14px] placeholder:font-medium leading-normal placeholder:text-left"
                   />
                 </div>
               </div>
@@ -522,7 +539,7 @@ export default function NextStepPage() {
 
           <div className="flex justify-between items-center">
             <button
-              className="text-[#272B35] bg-transparent underline text-[14px] font-medium leading-normal"
+              className="text-[#272B35] bg-transparent underline text-[16px] font-medium leading-normal"
               type="button"
             >
               Back
@@ -533,7 +550,7 @@ export default function NextStepPage() {
               type="button"
               onClick={() => router.push("/condominiums-info")}
             >
-              Get Started
+              Next
             </Button>
           </div>
         </div>

@@ -2,8 +2,8 @@
 import React from "react";
 import Button from "../../components/Button";
 import { FiEdit2, FiTrash2, FiPlus, FiX } from "react-icons/fi";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
 
 const INFO_LEFT = [
   {
@@ -134,21 +134,10 @@ export default function CondominiumsSummaryPage() {
   return (
     <div className="min-h-screen bg-[#fafbfc] flex flex-col">
       {/* Header */}
-      <div className="border-b-4 border-[#2563eb] bg-white">
-        <div className="max-w-6xl mx-auto flex items-center justify-between py-3 px-6">
-          <div className="flex items-center gap-2">
-            <Image src="/next.svg" alt="RentYard Logo" width={40} height={40} />
-            <span className="font-bold text-xl text-[#2563eb]">Rent</span>
-            <span className="font-bold text-xl text-gray-900">Yard</span>
-          </div>
-          <Button className="bg-white border border-[#2563eb] text-[#2563eb] hover:bg-[#f5f8ff] px-5 py-1.5 text-sm font-medium">
-            Save & Exit
-          </Button>
-        </div>
-      </div>
+      <Header />
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-2 py-8">
-        <div className="w-full max-w-6xl bg-white rounded-2xl shadow-sm p-8">
+        <div className="w-full max-w-7xl bg-white rounded-2xl shadow-sm p-8">
           <h2 className="text-lg font-semibold text-gray-900 mb-6 text-left">
             Condominiums information
           </h2>
@@ -356,24 +345,25 @@ export default function CondominiumsSummaryPage() {
               ))}
             </div>
           </div>
+
+          {/* Navigation Bar */}
+          <div className="flex justify-between items-center  pt-6 mt-6">
+            <button
+              className="text-[#272B35] bg-transparent underline text-[16px] font-medium leading-normal"
+              type="button"
+            >
+              Back
+            </button>
+            <Button
+              type="button"
+              className="px-8"
+              onClick={() => router.push("/property-info")}
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </main>
-      {/* Navigation Bar */}
-      <div className="w-full border-t bg-white py-4 px-6 flex justify-between items-center fixed bottom-0 left-0 z-40">
-        <Button
-          className="bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
-          type="button"
-        >
-          Back
-        </Button>
-        <Button
-          type="button"
-          className="px-8"
-          onClick={() => router.push("/property-info")}
-        >
-          Next
-        </Button>
-      </div>
     </div>
   );
 }
