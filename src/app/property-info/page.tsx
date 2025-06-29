@@ -255,7 +255,7 @@ export default function PropertyInfoPage() {
           <div className="mb-8">
             <div className="bg-gray-50 rounded-xl border border-gray-200">
               <div className="px-6 py-3 border-b border-gray-200 rounded-t-xl bg-gray-100 text-sm font-semibold text-gray-700">
-                Property gallery (it's not unit photo)*
+                Property gallery (it&apos;s not unit photo)*
               </div>
               <div className="p-6">
                 <div className="flex flex-col md:flex-row gap-6">

@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Header from "../../components/Header";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
 

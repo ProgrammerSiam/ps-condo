@@ -265,15 +265,7 @@ const ROLES = [
 export default function Home() {
   const [propertyType, setPropertyType] = useState("condo");
   const [role, setRole] = useState("landlord");
-  const [ownershipFile, setOwnershipFile] = useState<File | null>(null);
-  const [accepted, setAccepted] = useState(false);
   const router = useRouter();
-
-  const handleGetStarted = () => {
-    if (accepted) {
-      router.push("/next-step");
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#fafbfc] flex flex-col">

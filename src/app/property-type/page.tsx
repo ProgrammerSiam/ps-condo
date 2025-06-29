@@ -271,12 +271,6 @@ export default function Home() {
   const [accepted, setAccepted] = useState(false);
   const router = useRouter();
 
-  const handleGetStarted = () => {
-    if (accepted) {
-      router.push("/next-step");
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[#fafbfc] flex flex-col">
       <Header />

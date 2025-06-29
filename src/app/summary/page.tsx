@@ -155,7 +155,7 @@ export default function CondominiumsSummaryPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {/* Left Column */}
             <div className="flex flex-col gap-3">
-              {INFO_LEFT.map((item, idx) => (
+              {INFO_LEFT.map((item) => (
                 <div
                   key={item.label}
                   className="flex items-start gap-2 group relative border-b last:border-b-0 pb-3"
@@ -266,7 +266,7 @@ export default function CondominiumsSummaryPage() {
               <div className="px-6 py-3 border-b border-gray-200 rounded-t-xl bg-gray-100 text-sm font-semibold text-gray-700">
                 Property gallery{" "}
                 <span className="text-xs text-gray-400">
-                  (It's not unit photo)*
+                  (It&apos;s not unit photo)*
                 </span>
               </div>
               <div className="p-6">

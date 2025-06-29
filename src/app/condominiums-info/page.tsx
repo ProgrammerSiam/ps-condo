@@ -30,7 +30,6 @@ const INFO_ITEMS = [
   { label: "Utilities provider", required: false, recommended: true },
 ];
 
-const FEATURED_PHOTO_BOXES = 1;
 const MORE_PHOTO_BOXES = 8;
 
 const COUNTRIES = ["Choose country", "USA", "Canada", "UK"];
@@ -38,25 +37,7 @@ const STATES = ["Choose state", "Texas", "California", "New York"];
 
 export default function CondominiumsInfoPage() {
   const router = useRouter();
-  const [showAddressModal, setShowAddressModal] = React.useState(false);
-  const [addressForm, setAddressForm] = React.useState({
-    propertyName: "Dallas apartments complex",
-    totalUnits: "50",
-    website: "http://",
-    country: "Choose country",
-    street: "111 Austin Ave",
-    apt: "123",
-    zip: "75061",
-    city: "Dallas",
-    state: "Choose state",
-  });
-  const handleAddressChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setAddressForm({ ...addressForm, [e.target.name]: e.target.value });
-  };
 
-  const [showLeasingModal, setShowLeasingModal] = React.useState(false);
   const [leasingForm, setLeasingForm] = React.useState({
     name: "Alex Johan",
     phone: "+880",
@@ -82,32 +63,6 @@ export default function CondominiumsInfoPage() {
       setLeasingForm((prev) => ({ ...prev, [name]: value }));
     }
   };
-
-  const [showChargesModal, setShowChargesModal] = React.useState(false);
-  const [chargesForm, setChargesForm] = React.useState({
-    applicationFee: "100",
-    applicantType: "All 18+ applicant",
-    adminFee: "15",
-    notApplicable: false,
-  });
-  const handleChargesChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    if (e.target instanceof HTMLInputElement && e.target.type === "checkbox") {
-      setChargesForm((prev) => ({
-        ...prev,
-        [name]: (e.target as HTMLInputElement).checked,
-      }));
-    } else {
-      setChargesForm((prev) => ({ ...prev, [name]: value }));
-    }
-  };
-  const APPLICANT_TYPES = [
-    "All 18+ applicant",
-    "Primary applicant only",
-    "All applicants",
-  ];
 
   // Modal state
   const [activeModal, setActiveModal] = React.useState<string | null>(null);
@@ -833,7 +788,7 @@ export default function CondominiumsInfoPage() {
             Condominiums information
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-            {INFO_ITEMS.slice(0, 7).map((item, i) => (
+            {INFO_ITEMS.slice(0, 7).map((item) => (
               <div
                 key={item.label}
                 className="flex items-center justify-between border border-gray-200 rounded-lg px-4 py-3 bg-white"
@@ -863,7 +818,7 @@ export default function CondominiumsInfoPage() {
                 </Button>
               </div>
             ))}
-            {INFO_ITEMS.slice(7).map((item, i) => (
+            {INFO_ITEMS.slice(7).map((item) => (
               <div
                 key={item.label}
                 className="flex items-center justify-between border border-gray-200 rounded-lg px-4 py-3 bg-white"
@@ -899,7 +854,7 @@ export default function CondominiumsInfoPage() {
               <div className="px-6 py-3 border-b border-gray-200 rounded-t-xl bg-gray-100 text-sm font-semibold text-gray-700">
                 Property gallery{" "}
                 <span className="text-xs text-gray-400">
-                  (It's not unit photo)*
+                  (It&apos;s not unit photo)*
                 </span>
               </div>
               <div className="p-6">
