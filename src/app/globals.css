@@ -22,5 +22,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.input {
+  @apply border border-gray-200 rounded-lg px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[#2563eb] transition w-full;
+}
+
+.upload-box {
+  @apply border-2 border-dashed border-[#2563eb] rounded-lg min-h-[80px] bg-white hover:bg-[#f5f8ff] transition;
 }

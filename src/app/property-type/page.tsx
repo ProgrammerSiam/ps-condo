@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import Header from "../components/Header";
-import SectionTitle from "../components/SectionTitle";
-import Card from "../components/Card";
-import Button from "../components/Button";
-
+import Header from "../../components/Header";
+import SectionTitle from "../../components/SectionTitle";
+import Card from "../../components/Card";
+import Button from "../../components/Button";
+import Checkbox from "../../components/Checkbox";
+import FileUpload from "../../components/FileUpload";
 import { useRouter } from "next/navigation";
 
 const PROPERTY_TYPES = [
@@ -119,14 +120,32 @@ export default function Home() {
             ))}
           </div>
 
+          <SectionTitle className="mb-2">Proof of ownership</SectionTitle>
+          <div className="mb-8">
+            <FileUpload file={ownershipFile} onFileChange={setOwnershipFile} />
+          </div>
+
+          <div className="flex items-center mb-8">
+            <Checkbox
+              checked={accepted}
+              onChange={(e) => setAccepted(e.target.checked)}
+              label="Accept RentYard property adding terms & condition"
+            />
+          </div>
+
           <div className="flex justify-between items-center">
             <Button
               className="bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
               type="button"
+              onClick={() => router.push("/property-type")}
             >
               Back
             </Button>
-            <Button type="button" onClick={() => router.push("/property-type")}>
+            <Button
+              type="button"
+              disabled={!accepted}
+              onClick={() => router.push("/realtor-verification")}
+            >
               Next
             </Button>
           </div>
