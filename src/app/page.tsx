@@ -337,14 +337,19 @@ export default function Home() {
           </div>
 
           <div className="flex justify-between items-center">
-            <Button
-              className="bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
+            <button
+              className="text-[#272B35] bg-transparent underline text-[14px] font-medium leading-normal"
               type="button"
             >
               Back
-            </Button>
-            <Button type="button" onClick={() => router.push("/property-type")}>
-              Next
+            </button>
+
+            <Button
+              className="cursor-pointer"
+              type="button"
+              onClick={() => router.push("/property-type")}
+            >
+              Get Started
             </Button>
           </div>
         </div>

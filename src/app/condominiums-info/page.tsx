@@ -826,23 +826,13 @@ export default function CondominiumsInfoPage() {
 
   return (
     <div className="min-h-screen bg-[#fafbfc] flex flex-col">
-      <div className="border-b border-gray-100 bg-white">
-        <div className="max-w-5xl mx-auto flex items-center justify-between py-4 px-8">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-xl text-[#2563eb]">Rent</span>
-            <span className="font-bold text-xl text-gray-900">Yard</span>
-          </div>
-          <Button className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-1.5 text-sm font-medium">
-            Save & Exit
-          </Button>
-        </div>
-      </div>
+      <Header />
       <main className="flex-1 flex flex-col items-center px-4 py-8">
         <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm p-10">
-          <h2 className="text-xl font-semibold text-gray-900 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-10 text-left">
             Condominiums information
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             {INFO_ITEMS.slice(0, 7).map((item, i) => (
               <div
                 key={item.label}
@@ -919,7 +909,7 @@ export default function CondominiumsInfoPage() {
                       Featured photo*
                     </span>
                     <div className="grid grid-cols-1 gap-2">
-                      <div className="upload-box flex flex-col items-center justify-center cursor-pointer">
+                      <div className="upload-box flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-[#2563eb] rounded-xl min-h-[110px] transition hover:bg-[#f5f8ff]">
                         <svg
                           width="32"
                           height="32"
@@ -934,7 +924,7 @@ export default function CondominiumsInfoPage() {
                             strokeLinecap="round"
                           />
                         </svg>
-                        <span className="text-xs text-gray-400 mt-2">
+                        <span className="text-xs text-gray-400 mt-2 text-center">
                           Upload cover photo
                           <br />
                           (.jpg, .png only)
@@ -951,7 +941,7 @@ export default function CondominiumsInfoPage() {
                       {Array.from({ length: MORE_PHOTO_BOXES }).map((_, i) => (
                         <div
                           key={i}
-                          className="upload-box flex flex-col items-center justify-center cursor-pointer"
+                          className="upload-box flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-[#2563eb] rounded-xl min-h-[110px] transition hover:bg-[#f5f8ff]"
                         >
                           <svg
                             width="32"
@@ -967,7 +957,7 @@ export default function CondominiumsInfoPage() {
                             />
                             <path
                               d="M16 10v12M10 16h12"
-                              stroke="#2563eb"
+                              stroke="#2563eb]"
                               strokeWidth="2"
                               strokeLinecap="round"
                             />
